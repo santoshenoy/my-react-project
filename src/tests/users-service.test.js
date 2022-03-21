@@ -106,7 +106,6 @@ describe('findUserById',  () => {
 
 
 describe('findAllUsers',  () => {
-
   // sample users we'll insert to then retrieve
   const usernames = [
     "larry", "curley", "moe"
@@ -125,11 +124,11 @@ describe('findAllUsers',  () => {
   );
 
   // clean up after ourselves
-  afterAll(() =>
-    // delete the users we inserted
-    usernames.map(username =>
-      deleteUsersByUsername(username)
-    )
+  afterAll( async () => {
+        await deleteUsersByUsername(usernames[0]);
+        await deleteUsersByUsername(usernames[1]);
+        await deleteUsersByUsername(usernames[2]);
+      }
   );
 
   test('can retrieve all users from REST API', async () => {
