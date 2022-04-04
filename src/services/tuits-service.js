@@ -1,11 +1,15 @@
 import axios from "axios";
 
-const TUITS_API = "https://morning-retreat-82753.herokuapp.com/api/tuits";
-const USERS_API = "https://morning-retreat-82753.herokuapp.com/api/users";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const TUITS_API = "http://localhost:4000/api/tuits";
+// const TUITS_API = `${BASE_URL}/api/tuits`
+const USERS_API = "http://localhost:4000/api/users";
+// const USERS_API = `${BASE_URL}/api/users`
 
 const api = axios.create({
     withCredentials: true
 });
+
 
 export const findAllTuits = () =>
     axios.get(TUITS_API)
@@ -15,7 +19,7 @@ export const findTuitById = (tid) =>
     axios.get(`${TUITS_API}/${tid}`)
         .then(response => response.data);
 
-export const findTuitByUser = (uid) =>
+export const findTuitsByUser = (uid) =>
     api.get(`${USERS_API}/${uid}/tuits`)
         .then(response => response.data);
 

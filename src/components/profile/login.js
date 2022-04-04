@@ -15,13 +15,13 @@ export const Login = () => {
             <input className="mb-2 form-control"
                    placeholder="username"
                    onChange={(e) =>
-                       setLoginUser({...loginUser,
-                           username: e.target.value})}/>
+                setLoginUser({...loginUser,
+                    username: e.target.value})}/>
             <input className="mb-2 form-control"
                    placeholder="password"
                    onChange={(e) =>
-                       setLoginUser({...loginUser,
-                           password: e.target.value})}/>
+                setLoginUser({...loginUser,
+                    password: e.target.value})}/>
             <button className="btn btn-primary mb-5"
                     onClick={login}>
                 Login</button>

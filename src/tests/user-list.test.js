@@ -29,8 +29,9 @@ test('user list renders async', async () => {
 })
 
 test('user list renders mocked', async () => {
-  const mock = jest.spyOn(axios, "get");
-  mock.mockImplementation(() =>
+  // Only create spy here rather than mocking entire module
+  const getSpy = jest.spyOn(axios, "get");
+  getSpy.mockImplementation(() =>
     Promise.resolve({ data: {users: MOCKED_USERS} }));
   const response = await findAllUsers();
   const users = response.users;
@@ -42,5 +43,5 @@ test('user list renders mocked', async () => {
 
   const user = screen.getByText(/ellen_ripley/i);
   expect(user).toBeInTheDocument();
-  mock.mockRestore();
+  getSpy.mockRestore();
 });
