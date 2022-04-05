@@ -5,21 +5,15 @@ import Tuits from "../tuits";
 const MyTuits = () => {
     const [tuits, setTuits] = useState([]);
     const findMyTuits = () =>
-        service.findTuitsByUser("me")
+        service.findTuitsByUser("my")
             .then(tuits => setTuits(tuits));
+    console.log(tuits)
+    // on load invoke findMyTuits
     useEffect(findMyTuits, []);
-    const deleteTuit = (tid) =>
-        service.deleteTuit(tid)
-            .then(findMyTuits);
-    if (!tuits.length) {
-        return (
-            <h5>Looks like you haven't posted anything yet</h5>
-        )
-    }
     return(
+        // render my tuits and pass refresh(findMyTuits) event handler
         <Tuits tuits={tuits}
-               deleteTuit={deleteTuit}
-        />
+               refreshTuits={findMyTuits}/>
     );
 };
 

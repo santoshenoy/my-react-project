@@ -1,7 +1,6 @@
 import axios from "axios";
-// const BASE_URL = "https://cs5500-01-sp22.herokuapp.com/api";
-// const BASE_URL = "http://localhost:4000/api";
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://stormy-shelf-58076.herokuapp.com";
+
 
 const SECURITY_API = `${BASE_URL}/api/auth`;
 
@@ -19,8 +18,8 @@ export const login = (user) =>
     api.post(`${SECURITY_API}/login`, user)
         .then(response => response.data);
 
-export const logout = (user) =>
-    api.post(`${SECURITY_API}/logout`, user)
+export const logout = () =>
+    api.post(`${SECURITY_API}/logout`)
         .then(response => response.data);
 
 export const profile = () =>
