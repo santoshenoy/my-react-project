@@ -3,6 +3,7 @@
  */
 import axios from "axios";
 const BASE_URL = "https://stormy-shelf-58076.herokuapp.com/api";
+//const BASE_URL = "http://localhost:4000/api"
 
 const USERS_API = `${BASE_URL}/users`;
 
@@ -25,4 +26,8 @@ export const userLikesTuit = (uid, tid) =>
  */
 export const findAllTuitsLikedByUser = (uid) =>
     api.get(`${USERS_API}/${uid}/likes`)
+        .then(response => response.data);
+
+export const findUserLikesTuit = (uid, tid) =>
+    api.get(`${USERS_API}/${uid}/likes/${tid}`)
         .then(response => response.data);

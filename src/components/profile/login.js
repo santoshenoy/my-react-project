@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import * as service from "../../services/security-service";
 
@@ -23,6 +23,8 @@ export const Login = () => {
                   password: e.target.value})}/>
           <button onClick={login}>
               Login</button>
+          <h6>Don't have an account? Register <Link to="/signup">here!</Link></h6>
+
       </div>
         );
 };

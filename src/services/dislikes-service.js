@@ -2,6 +2,7 @@
  * @file Axios Request service API for dislikes && tuits resource
  */
 import axios from "axios";
+//const BASE_URL = "http://localhost:4000/api"
 const BASE_URL = "https://stormy-shelf-58076.herokuapp.com/api";
 const USERS_API = `${BASE_URL}/users`;
 
@@ -24,4 +25,8 @@ export const userDislikesTuit = (uid, tid) =>
  */
 export const findAllTuitsDisLikedByUser = (uid) =>
     api.get(`${USERS_API}/${uid}/dislikes`)
+        .then(response => response.data);
+
+export const findUserDislikesTuit = (uid, tid) =>
+    api.get(`${USERS_API}/${uid}/dislikes/${tid}`)
         .then(response => response.data);
